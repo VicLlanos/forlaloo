@@ -1,0 +1,2838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forlaloo | Eternal Yarn Flowers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Animate CSS for smooth animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --dusty-blue: #6D8A96;
+            --rustic-cream: #F5F1E6;
+            --soft-taupe: #A7998E;
+            --deep-moss: #5A716A;
+            --warm-terracotta: #B56A4D;
+            --dark-charcoal: #2D2D2A;
+            --light-linen: #F9F7F3;
+            --accent-gold: #D4AF37;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-charcoal);
+            background-color: var(--light-linen);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar {
+            background-color: rgba(249, 247, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 152, 142, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(45, 45, 42, 0.05);
+        }
+        
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dusty-blue) !important;
+            position: relative;
+        }
+        
+        .navbar-brand:after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: var(--warm-terracotta);
+            border-radius: 50%;
+            bottom: 5px;
+            right: -10px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-charcoal) !important;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.25rem;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dusty-blue);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:before, .nav-link.active:before {
+            width: 70%;
+        }
+        
+        .nav-link.active {
+            color: var(--dusty-blue) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--dusty-blue);
+            border-color: var(--dusty-blue);
+            color: white;
+            padding: 12px 28px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--deep-moss);
+            border-color: var(--deep-moss);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(109, 138, 150, 0.2);
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--dusty-blue);
+            color: var(--dusty-blue);
+            padding: 12px 28px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--dusty-blue);
+            border-color: var(--dusty-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(109, 138, 150, 0.2);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(245, 241, 230, 0.9), rgba(245, 241, 230, 0.7)), url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 160px 0 100px;
+            color: var(--dark-charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            top: -50%;
+            left: -50%;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dusty-blue), var(--warm-terracotta));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-img-top {
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--rustic-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--dusty-blue);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-icon:hover {
+            background-color: var(--dusty-blue);
+            color: white;
+            transform: rotate(15deg);
+        }
+        
+        .footer {
+            background-color: var(--dark-charcoal);
+            color: var(--rustic-cream);
+            padding: 80px 0 40px;
+            position: relative;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dusty-blue), var(--warm-terracotta));
+        }
+        
+        .footer a {
+            color: var(--rustic-cream);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .footer a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--warm-terracotta);
+            transition: width 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--warm-terracotta);
+        }
+        
+        .footer a:hover:after {
+            width: 100%;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 14px 16px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--rustic-cream);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--dusty-blue);
+            box-shadow: 0 0 0 0.25rem rgba(109, 138, 150, 0.15);
+            background-color: white;
+        }
+        
+        .order-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .order-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background-color: rgba(109, 138, 150, 0.2);
+            bottom: -40px;
+            left: 25px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--rustic-cream);
+            color: var(--dusty-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            border: 2px solid var(--dusty-blue);
+            transition: all 0.3s;
+        }
+        
+        .step-number.active {
+            background-color: var(--dusty-blue);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step-number.completed {
+            background-color: var(--deep-moss);
+            border-color: var(--deep-moss);
+            color: white;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 280px;
+            position: relative;
+        }
+        
+        .gallery-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(45, 45, 42, 0.4), transparent);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .gallery-item:hover:before {
+            opacity: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        
+        .gallery-item .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: white;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--warm-terracotta);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .page-header {
+            background-color: var(--rustic-cream);
+            padding: 140px 0 60px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--dusty-blue) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            opacity: 0.05;
+        }
+        
+        .page-header:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--warm-terracotta) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            opacity: 0.05;
+        }
+        
+        .custom-radio-img {
+            position: relative;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .custom-radio-img.selected {
+            border-color: var(--dusty-blue);
+            box-shadow: 0 10px 25px rgba(109, 138, 150, 0.2);
+        }
+        
+        .custom-radio-img input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .radio-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            transition: all 0.3s;
+        }
+        
+        .custom-radio-img:hover .radio-label {
+            background-color: white;
+            padding-bottom: 20px;
+        }
+        
+        .order-summary {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(109, 138, 150, 0.1);
+            position: sticky;
+            top: 120px;
+        }
+        
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(109, 138, 150, 0.1);
+        }
+        
+        .order-total {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--deep-moss);
+        }
+        
+        .progress {
+            height: 6px;
+            background-color: var(--rustic-cream);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--dusty-blue), var(--deep-moss));
+            transition: width 0.6s ease;
+        }
+        
+        .floral-icon {
+            color: var(--dusty-blue);
+            margin-right: 10px;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .care-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--rustic-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-moss);
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .care-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(109, 138, 150, 0.1);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-top: 4px solid var(--dusty-blue);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 5rem;
+            color: rgba(109, 138, 150, 0.1);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--rustic-cream);
+        }
+        
+        .star-rating {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(109, 138, 150, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .cart-item:hover {
+            background-color: rgba(245, 241, 230, 0.3);
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: -15px;
+            margin-right: -15px;
+            border-radius: 8px;
+        }
+        
+        .cart-item-image {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--rustic-cream);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-charcoal);
+            transition: all 0.2s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--dusty-blue);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid rgba(109, 138, 150, 0.2);
+            border-radius: 4px;
+            margin: 0 10px;
+            padding: 8px;
+            font-weight: 600;
+            background-color: white;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .empty-cart-icon {
+            font-size: 5rem;
+            color: rgba(109, 138, 150, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .badge-category {
+            background-color: var(--rustic-cream);
+            color: var(--dark-charcoal);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .badge-category:hover {
+            background-color: var(--dusty-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .quick-order-card {
+            border-left: 4px solid var(--warm-terracotta);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .quick-order-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            background-color: var(--dusty-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(109, 138, 150, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 25px rgba(109, 138, 150, 0.3); }
+            50% { box-shadow: 0 10px 30px rgba(109, 138, 150, 0.5); }
+            100% { box-shadow: 0 10px 25px rgba(109, 138, 150, 0.3); }
+        }
+        
+        .floating-cart:hover {
+            background-color: var(--deep-moss);
+            transform: scale(1.1);
+        }
+        
+        .floating-cart .cart-count {
+            top: -5px;
+            right: -5px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(109, 138, 150, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--dusty-blue);
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .toast-notification {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid var(--dusty-blue);
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 350px;
+        }
+        
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+        
+        .floral-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dusty-blue), transparent);
+            margin: 40px 0;
+        }
+        
+        .text-dusty-blue {
+            color: var(--dusty-blue) !important;
+        }
+        
+        .bg-rustic-cream {
+            background-color: var(--rustic-cream) !important;
+        }
+        
+        .text-warm-terracotta {
+            color: var(--warm-terracotta) !important;
+        }
+        
+        .text-deep-moss {
+            color: var(--deep-moss) !important;
+        }
+        
+        /* Order Steps Styling */
+        .order-step-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .order-step-content.active {
+            display: block;
+        }
+        
+        .selection-card {
+            cursor: pointer;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .selection-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .selection-card.selected {
+            border-color: var(--dusty-blue);
+            box-shadow: 0 10px 25px rgba(109, 138, 150, 0.2);
+        }
+        
+        .selection-card .checkmark {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 25px;
+            background-color: var(--dusty-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s;
+        }
+        
+        .selection-card.selected .checkmark {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .color-option.selected {
+            border-color: var(--dark-charcoal);
+            transform: scale(1.1);
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .review-item {
+            padding: 20px;
+            background-color: var(--rustic-cream);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        /* Login Modal Styles */
+        .login-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-modal {
+            background-color: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--dusty-blue), var(--deep-moss));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        
+        .modal-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(109, 138, 150, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .modal-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .modal-tab.active {
+            color: var(--dusty-blue);
+            border-bottom-color: var(--dusty-blue);
+        }
+        
+        .form-check-label {
+            font-size: 0.9rem;
+        }
+        
+        .subscription-required {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--rustic-cream);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--dusty-blue);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--deep-moss);
+        }
+        
+        /* Selection color */
+        ::selection {
+            background-color: rgba(109, 138, 150, 0.3);
+            color: var(--dark-charcoal);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 60px;
+            }
+            
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .floating-cart {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .toast-notification {
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+            
+            .modal-body {
+                padding: 30px 20px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home')">
+                <i class="fas fa-spa floral-icon"></i> Forlaloo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('about')">Our Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('order')">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('gallery')">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('care')">Care</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="#" onclick="showPage('cart')">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-count ms-1" id="mobileCartCount">2</span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline-primary ms-3 d-none d-lg-block" onclick="showPage('order')">
+                    <i class="fas fa-bouquet me-2"></i>Create Yours
+                </a>
+                <a href="#" class="btn btn-outline-primary ms-3 d-none d-lg-block" onclick="showPage('cart')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count ms-1" id="desktopCartCount">2</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login/Subscription Modal -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <div class="modal-header">
+                <h3 class="mb-0"><i class="fas fa-lock me-2"></i>Forlaloo Members Only</h3>
+                <p class="mb-0 mt-2">Login or subscribe to complete your purchase</p>
+            </div>
+            <div class="modal-body">
+                <div class="subscription-required">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-crown text-warm-terracotta fa-lg me-3"></i>
+                        <div>
+                            <h6 class="mb-1">Subscription Required</h6>
+                            <p class="small mb-0">All purchases require a Forlaloo subscription to support our sustainable crafting community.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-tabs">
+                    <div class="modal-tab active" onclick="showLoginTab('login')">Login</div>
+                    <div class="modal-tab" onclick="showLoginTab('signup')">Sign Up</div>
+                </div>
+                
+                <div id="loginTab" class="login-tab">
+                    <form id="loginForm">
+                        <div class="mb-4">
+                            <label for="loginEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="text-dusty-blue small">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-lg">Login & Continue Checkout</button>
+                    </form>
+                </div>
+                
+                <div id="signupTab" class="login-tab" style="display: none;">
+                    <form id="signupForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h6 class="card-title mb-3">Subscription Plan</h6>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="subscriptionPlan" id="monthlyPlan" value="monthly" checked>
+                                    <label class="form-check-label" for="monthlyPlan">
+                                        <strong>Monthly Subscription</strong> - $9.99/month
+                                        <small class="d-block text-muted">Free shipping + 10% off all purchases</small>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="subscriptionPlan" id="yearlyPlan" value="yearly">
+                                    <label class="form-check-label" for="yearlyPlan">
+                                        <strong>Yearly Subscription</strong> - $99/year
+                                        <small class="d-block text-muted">All monthly benefits + 15% off all purchases</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="termsAgreement" required>
+                            <label class="form-check-label small" for="termsAgreement">
+                                I agree to the <a href="#" class="text-dusty-blue">Terms of Service</a> and <a href="#" class="text-dusty-blue">Privacy Policy</a>. I understand my subscription will automatically renew.
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 btn-lg">Subscribe & Complete Purchase</button>
+                    </form>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p class="small text-muted">By subscribing, you support our sustainable crafting community and get exclusive benefits.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart -->
+    <div class="floating-cart" onclick="showPage('cart')">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="floatingCartCount">2</span>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <i class="fas fa-check-circle text-deep-moss fa-2x"></i>
+            </div>
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1" id="toastTitle">Item Added to Cart</h6>
+                <p class="mb-0 small" id="toastMessage">Eternal Rose Bouquet has been added to your cart.</p>
+            </div>
+            <button type="button" class="btn-close ms-3" onclick="hideToast()"></button>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <h1 class="display-3 mb-4 animate__animated animate__fadeIn">Flowers That Last a Lifetime</h1>
+                        <p class="lead mb-5 fs-5 animate__animated animate__fadeIn animate__delay-1s">Handcrafted yarn flowers designed to be cherished and cared for, just like the special people in your life. Each creation tells a story of love and permanence.</p>
+                        <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s">
+                            <a href="#" class="btn btn-primary btn-lg" onclick="showPage('order')">
+                                <i class="fas fa-bouquet me-2"></i>Create Your Bouquet
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-lg" onclick="showPage('gallery')">
+                                <i class="fas fa-images me-2"></i>Explore Gallery
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center mt-5 mt-lg-0">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1560717782-9e49b4d48d5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow-lg" alt="Forlaloo Yarn Flowers">
+                            <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded shadow-sm m-3">
+                                <h5 class="mb-0">Handcrafted with <i class="fas fa-heart text-warm-terracotta"></i></h5>
+                                <p class="small mb-0">Since 2018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Order Section -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title">Quick Order Templates</h2>
+                <p class="text-center mb-5">Choose from our popular curated arrangements for any occasion</p>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card quick-order-card h-100" onclick="quickOrder('anniversary-roses')">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <h4 class="ms-3 mb-0">Anniversary Roses</h4>
+                                </div>
+                                <p class="mb-4">Classic red roses in a ceramic vase, perfect for celebrating lasting love.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0 text-deep-moss">$94.99</span>
+                                    <span class="badge bg-rustic-cream text-dark">24h delivery</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card quick-order-card h-100" onclick="quickOrder('wedding-lilies')">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-ring"></i>
+                                    </div>
+                                    <h4 class="ms-3 mb-0">Wedding Lilies</h4>
+                                </div>
+                                <p class="mb-4">Elegant white lilies for the bridal party or as a lasting wedding gift.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0 text-deep-moss">$124.99</span>
+                                    <span class="badge bg-rustic-cream text-dark">Bulk discount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card quick-order-card h-100" onclick="quickOrder('sunflower-joy')">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <h4 class="ms-3 mb-0">Sunflower Joy</h4>
+                                </div>
+                                <p class="mb-4">Bright sunflowers to celebrate graduations, birthdays, or new beginnings.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0 text-deep-moss">$84.99</span>
+                                    <span class="badge bg-rustic-cream text-dark">Best seller</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-outline-primary" onclick="showPage('order')">
+                        <i class="fas fa-sliders-h me-2"></i>Customize Your Own
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-5 bg-rustic-cream">
+            <div class="container">
+                <h2 class="section-title">Why Forlaloo Stands Apart</h2>
+                
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center p-4 h-100 border-0 shadow-sm">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                            <h4 class="my-3">Timeless Beauty</h4>
+                            <p>Unlike fresh flowers that fade, our yarn creations are designed to be cherished for generations as permanent reminders of your affection.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center p-4 h-100 border-0 shadow-sm">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="my-3">Sustainable Craft</h4>
+                            <p>Each flower is made with eco-friendly materials and ethical practices, ensuring beauty that's kind to both people and planet.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center p-4 h-100 border-0 shadow-sm">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h4 class="my-3">Heirloom Quality</h4>
+                            <p>Meticulously crafted by skilled artisans, every piece is made to become a cherished heirloom passed down through families.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title">Cherished Stories</h2>
+                
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimonial-img" alt="Sarah M.">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-3">"My Forlaloo bouquet from our wedding day still sits on our mantle, as beautiful as ever. It's the most meaningful gift we received."</p>
+                            <h5>Sarah M.</h5>
+                            <p class="text-muted">Wedding Client</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimonial-img" alt="James R.">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-3">"As someone who travels frequently, I love that I can enjoy beautiful flowers without worrying about them wilting while I'm away."</p>
+                            <h5>James R.</h5>
+                            <p class="text-muted">Frequent Traveler</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimonial-img" alt="Emily T.">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-3">"The personalized tulip arrangement I ordered for my mother's birthday brought her to tears. She displays it proudly in her living room."</p>
+                            <h5>Emily T.</h5>
+                            <p class="text-muted">Gift Giver</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-5 bg-dark-charcoal text-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-5 mb-3">Ready to Create Lasting Memories?</h2>
+                        <p class="lead mb-0">Design your custom yarn flower arrangement today. No wilting, just everlasting beauty.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('order')">
+                            <i class="fas fa-pencil-alt me-2"></i>Design Yours Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page-content">
+        <div class="page-header">
+            <div class="container text-center">
+                <h1 class="display-3 mb-4">Our Story</h1>
+                <p class="lead fs-4">Where craft meets eternity</p>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="about-image" alt="Our Craft Process">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">The Forlaloo Philosophy</h2>
+                    <p class="fs-5 mb-4">Forlaloo was born from a simple idea: what if the flowers we give could last as long as our memories?</p>
+                    <p>Our founder, Elara, began creating yarn flowers as gifts for loved ones during difficult times. She wanted to offer something beautiful that wouldn't fade—a lasting reminder of love and support.</p>
+                    <p>Today, Forlaloo brings that same intention to every creation. We believe the gifts we give should reflect the permanence of our feelings and the care we have for one another.</p>
+                </div>
+            </div>
+
+            <div class="floral-divider"></div>
+
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="https://images.unsplash.com/photo-1562698314-1c3e3caddd34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="about-image" alt="Our Materials">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="mb-4">Sustainable & Thoughtful Crafting</h2>
+                    <p>Every Forlaloo flower begins with high-quality, sustainable materials. We source our yarns from eco-conscious suppliers and use frames designed to last for generations.</p>
+                    <p>Our artisans undergo extensive training to master the techniques that make our flowers special. Each petal is shaped with attention to natural form and movement, creating pieces that feel alive.</p>
+                    <p>We're committed to ethical production practices and fair wages for all our craftspeople, ensuring every flower carries positive energy from creation to delivery.</p>
+                </div>
+            </div>
+
+            <div class="floral-divider"></div>
+
+            <div class="row text-center mt-5">
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="my-3">Sustainable Materials</h4>
+                    <p>Eco-friendly yarns and biodegradable packaging</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4 class="my-3">Ethical Production</h4>
+                    <p>Fair wages and safe working conditions</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4 class="my-3">Quality Guarantee</h4>
+                    <p>Lifetime craftsmanship guarantee on every piece</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4 class="my-3">Carbon Neutral Shipping</h4>
+                    <p>Eco-friendly packaging and shipping options</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Page - Full Step-by-Step Process -->
+    <div id="order-page" class="page-content">
+        <div class="page-header">
+            <div class="container text-center">
+                <h1 class="display-3 mb-4">Create Your Forlaloo</h1>
+                <p class="lead fs-4">Design a lasting gift in four simple steps</p>
+                
+                <!-- Order Progress -->
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-10">
+                        <div class="progress mb-4">
+                            <div class="progress-bar" role="progressbar" id="orderProgress" style="width: 25%;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 text-center">
+                                <div class="step-number active mx-auto" id="step1Indicator">1</div>
+                                <p class="mb-0 mt-2 fw-bold">Flower</p>
+                            </div>
+                            <div class="col-3 text-center">
+                                <div class="step-number mx-auto" id="step2Indicator">2</div>
+                                <p class="mb-0 mt-2">Arrangement</p>
+                            </div>
+                            <div class="col-3 text-center">
+                                <div class="step-number mx-auto" id="step3Indicator">3</div>
+                                <p class="mb-0 mt-2">Personalize</p>
+                            </div>
+                            <div class="col-3 text-center">
+                                <div class="step-number mx-auto" id="step4Indicator">4</div>
+                                <p class="mb-0 mt-2">Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Select Flower -->
+        <div id="step1" class="order-step-content active">
+            <div class="container mb-5">
+                <h3 class="mb-4">Step 1: Choose Your Flower Type</h3>
+                <p class="mb-5">Select the bloom that speaks to your heart. Each carries its own meaning and beauty.</p>
+                
+                <div class="row" id="flowerOptions">
+                    <!-- Flower options will be loaded here -->
+                </div>
+                
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="btn btn-outline-primary" onclick="showPage('home')">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </button>
+                    <button class="btn btn-primary btn-lg" onclick="goToStep(2)">
+                        Next: Arrangement <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Select Arrangement -->
+        <div id="step2" class="order-step-content">
+            <div class="container mb-5">
+                <h3 class="mb-4">Step 2: Choose Your Arrangement Style</h3>
+                <p class="mb-5">Select how you'd like your flowers presented. Each style tells a different story.</p>
+                
+                <div class="row" id="arrangementOptions">
+                    <!-- Arrangement options will be loaded here -->
+                </div>
+                
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="btn btn-outline-primary" onclick="goToStep(1)">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Flowers
+                    </button>
+                    <button class="btn btn-primary btn-lg" onclick="goToStep(3)">
+                        Next: Personalize <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Personalize -->
+        <div id="step3" class="order-step-content">
+            <div class="container mb-5">
+                <h3 class="mb-4">Step 3: Personalize Your Creation</h3>
+                <p class="mb-5">Add personal touches to make your arrangement uniquely meaningful.</p>
+                
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Color Selection</h5>
+                                <p class="mb-3">Choose your flower colors (you can select multiple):</p>
+                                <div class="d-flex flex-wrap mb-4" id="colorOptions">
+                                    <!-- Color options will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Add a Personal Message</h5>
+                                <div class="mb-3">
+                                    <label for="personalMessage" class="form-label">Message for Gift Card (optional)</label>
+                                    <textarea class="form-control" id="personalMessage" rows="4" placeholder="Write a heartfelt message to accompany your gift..."></textarea>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeGiftCard">
+                                    <label class="form-check-label" for="includeGiftCard">
+                                        Include a handwritten gift card with your message (+$4.99)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Special Requests</h5>
+                                <div class="mb-3">
+                                    <label for="specialRequests" class="form-label">Any special instructions for our artisans?</label>
+                                    <textarea class="form-control" id="specialRequests" rows="3" placeholder="E.g., specific color shades, special wrapping requests..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Your Selections</h5>
+                                <div class="mb-4">
+                                    <h6>Current Flower:</h6>
+                                    <p id="selectedFlowerPreview" class="text-muted">No flower selected yet</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>Current Arrangement:</h6>
+                                    <p id="selectedArrangementPreview" class="text-muted">No arrangement selected yet</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>Selected Colors:</h6>
+                                    <div id="selectedColorsPreview" class="d-flex flex-wrap"></div>
+                                </div>
+                                <div class="floral-divider"></div>
+                                <div class="mt-4">
+                                    <h6>Estimated Total:</h6>
+                                    <h4 id="estimatedTotal" class="text-deep-moss">$0.00</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="btn btn-outline-primary" onclick="goToStep(2)">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Arrangement
+                    </button>
+                    <button class="btn btn-primary btn-lg" onclick="goToStep(4)">
+                        Next: Review & Add to Cart <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Review -->
+        <div id="step4" class="order-step-content">
+            <div class="container mb-5">
+                <h3 class="mb-4">Step 4: Review Your Creation</h3>
+                <p class="mb-5">Review your selections before adding to cart. Make any final adjustments.</p>
+                
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Your Custom Forlaloo</h5>
+                                
+                                <div class="review-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3">
+                                            <i class="fas fa-spa fa-2x text-dusty-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Selected Flower</h6>
+                                            <p id="reviewFlower" class="mb-0">No selection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3">
+                                            <i class="fas fa-gem fa-2x text-dusty-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Arrangement Style</h6>
+                                            <p id="reviewArrangement" class="mb-0">No selection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3">
+                                            <i class="fas fa-palette fa-2x text-dusty-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Selected Colors</h6>
+                                            <p id="reviewColors" class="mb-0">No colors selected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3">
+                                            <i class="fas fa-envelope fa-2x text-dusty-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Personal Message</h6>
+                                            <p id="reviewMessage" class="mb-0">No message added</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3">
+                                            <i class="fas fa-star fa-2x text-dusty-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Special Requests</h6>
+                                            <p id="reviewRequests" class="mb-0">No special requests</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-light">
+                            <div class="d-flex">
+                                <i class="fas fa-info-circle text-dusty-blue fa-lg me-3"></i>
+                                <div>
+                                    <h6 class="mb-2">Important Information</h6>
+                                    <p class="small mb-0">Your custom creation will be handcrafted within 5-7 business days. You'll receive a confirmation email with tracking information once your order ships. All Forlaloo creations come with a lifetime craftsmanship guarantee.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="order-summary">
+                            <h4 class="mb-4">Order Summary</h4>
+                            
+                            <div class="order-summary-item">
+                                <span>Base Flower</span>
+                                <span id="summaryFlowerPrice">$0.00</span>
+                            </div>
+                            
+                            <div class="order-summary-item">
+                                <span>Arrangement</span>
+                                <span id="summaryArrangementPrice">$0.00</span>
+                            </div>
+                            
+                            <div class="order-summary-item">
+                                <span>Gift Card</span>
+                                <span id="summaryGiftCardPrice">$0.00</span>
+                            </div>
+                            
+                            <div class="order-summary-item">
+                                <span>Tax (estimated)</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            
+                            <div class="order-summary-item pt-3">
+                                <strong class="order-total">Total</strong>
+                                <strong class="order-total" id="summaryTotal">$0.00</strong>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary btn-lg" onclick="addToCart()">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="goToStep(3)">
+                                    <i class="fas fa-edit me-2"></i>Edit Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="btn btn-outline-primary" onclick="goToStep(3)">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Personalize
+                    </button>
+                    <button class="btn btn-success btn-lg" onclick="addToCartAndCheckout()">
+                        Add to Cart & Checkout <i class="fas fa-shopping-cart ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery-page" class="page-content">
+        <div class="page-header">
+            <div class="container text-center">
+                <h1 class="display-3 mb-4">Forlaloo Gallery</h1>
+                <p class="lead fs-4">A collection of cherished creations</p>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-center mb-4" id="galleryFilters">
+                        <!-- Filter buttons would be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="galleryContainer">
+                <!-- Gallery items would be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Care Guide Page -->
+    <div id="care-page" class="page-content">
+        <div class="page-header">
+            <div class="container text-center">
+                <h1 class="display-3 mb-4">Caring for Your Forlaloo</h1>
+                <p class="lead fs-4">Preserve the beauty for generations</p>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="care-step">
+                        <div class="care-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div>
+                            <h4>Dusting & Cleaning</h4>
+                            <p>Gently dust your yarn flowers weekly with a soft brush or a hairdryer on the cool setting. For deeper cleaning, use a vacuum cleaner with a brush attachment on the lowest setting, keeping it at least 6 inches away.</p>
+                            <div class="alert alert-light mt-3">
+                                <i class="fas fa-lightbulb text-warm-terracotta me-2"></i>
+                                <strong>Tip:</strong> Avoid using water or liquid cleaners as they may damage the yarn fibers.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="care-step">
+                        <div class="care-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div>
+                            <h4>Sunlight Exposure</h4>
+                            <p>While our yarn is colorfast, prolonged direct sunlight may cause colors to fade over time. Display your Forlaloo flowers in areas with indirect light to preserve their vibrant colors for years.</p>
+                            <div class="alert alert-light mt-3">
+                                <i class="fas fa-lightbulb text-warm-terracotta me-2"></i>
+                                <strong>Tip:</strong> Rotate your arrangement periodically if it's near a window for even exposure.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="care-step">
+                        <div class="care-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div>
+                            <h4>Temperature & Humidity</h4>
+                            <p>Yarn flowers are sensitive to extreme temperatures and humidity. Avoid placing them near heating vents, fireplaces, or in damp areas. Ideal conditions are room temperature with moderate humidity.</p>
+                            <div class="alert alert-light mt-3">
+                                <i class="fas fa-lightbulb text-warm-terracotta me-2"></i>
+                                <strong>Tip:</strong> In humid climates, consider using a dehumidifier in the display room.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Quick Care Reference</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-deep-moss me-3"></i>
+                                    <span>Dust weekly with soft brush</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-deep-moss me-3"></i>
+                                    <span>Keep away from direct sunlight</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-deep-moss me-3"></i>
+                                    <span>Avoid water and liquid cleaners</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-deep-moss me-3"></i>
+                                    <span>Store in cool, dry place</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-deep-moss me-3"></i>
+                                    <span>Handle by stems, not petals</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Need Professional Care?</h5>
+                            <p>If your Forlaloo flowers need more than routine care, we offer professional refurbishment services to restore them to their original beauty.</p>
+                            <a href="#" class="btn btn-primary w-100">
+                                <i class="fas fa-concierge-bell me-2"></i>Contact Care Team
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart-page" class="page-content">
+        <div class="page-header">
+            <div class="container text-center">
+                <h1 class="display-3 mb-4">Your Cherished Cart</h1>
+                <p class="lead fs-4">Review the lasting beauty you've selected</p>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div id="cart-content">
+                <!-- Cart content would be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <h3 class="mb-4"><i class="fas fa-spa floral-icon"></i> Forlaloo</h3>
+                    <p class="mb-4">Handcrafted yarn flowers designed to be cherished and cared for, just like the special people in your life.</p>
+                    <div class="social-icons">
+                        <a href="#" class="me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-pinterest fa-lg"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5">
+                    <h5 class="mb-4">Shop</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="#" onclick="showPage('order')">Create Bouquet</a></li>
+                        <li class="mb-3"><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+                        <li class="mb-3"><a href="#">Best Sellers</a></li>
+                        <li class="mb-3"><a href="#">Seasonal Collection</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5">
+                    <h5 class="mb-4">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="#" onclick="showPage('about')">Our Story</a></li>
+                        <li class="mb-3"><a href="#">Careers</a></li>
+                        <li class="mb-3"><a href="#">Wholesale</a></li>
+                        <li class="mb-3"><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12 mb-5">
+                    <h5 class="mb-4">Stay Connected</h5>
+                    <p class="mb-4">Subscribe for updates on new collections and special offers.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 Forlaloo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#" class="me-3">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // App state
+        let currentUser = null;
+        let isSubscribed = false;
+        let currentStep = 1;
+        
+        // Order configuration
+        let orderConfig = {
+            flower: null,
+            arrangement: null,
+            colors: [],
+            giftCard: false,
+            message: '',
+            specialRequests: ''
+        };
+        
+        // Data for the order process
+        const flowerOptions = [
+            {
+                id: 'rose',
+                name: 'Eternal Roses',
+                image: 'https://images.unsplash.com/photo-1578948856697-db91d246b7b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Symbol of love and passion. Perfect for romantic occasions.',
+                price: 79.99
+            },
+            {
+                id: 'tulip',
+                name: 'Tulip Serenity',
+                image: 'https://images.unsplash.com/photo-1547517023-7ca0c162f816?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Represent perfect love and cheerfulness. Ideal for birthdays.',
+                price: 69.99
+            },
+            {
+                id: 'sunflower',
+                name: 'Sunflower Joy',
+                image: 'https://images.unsplash.com/photo-1513530176992-0cf39c4cbed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Symbol of adoration and loyalty. Great for celebrations.',
+                price: 74.99
+            },
+            {
+                id: 'lily',
+                name: 'Lily Elegance',
+                image: 'https://images.unsplash.com/photo-1560714355-25e6fb6e3d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Represent purity and refined beauty. Perfect for weddings.',
+                price: 89.99
+            }
+        ];
+        
+        const arrangementOptions = [
+            {
+                id: 'bouquet',
+                name: 'Classic Bouquet',
+                image: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Traditional hand-tied arrangement in a decorative vase.',
+                price: 34.99
+            },
+            {
+                id: 'box',
+                name: 'Luxury Gift Box',
+                image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Elegant presentation in a keepsake wooden box.',
+                price: 49.99
+            },
+            {
+                id: 'terrarium',
+                name: 'Glass Terrarium',
+                image: 'https://images.unsplash.com/photo-1559268950-2d7ceb2efa3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Modern display in a sealed glass dome.',
+                price: 64.99
+            },
+            {
+                id: 'wreath',
+                name: 'Seasonal Wreath',
+                image: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                description: 'Circular arrangement perfect for hanging display.',
+                price: 54.99
+            }
+        ];
+        
+        const colorOptions = [
+            { id: 'red', name: 'Crimson Red', hex: '#B56A4D' },
+            { id: 'pink', name: 'Blush Pink', hex: '#E8B4B8' },
+            { id: 'white', name: 'Pearl White', hex: '#F5F1E6' },
+            { id: 'yellow', name: 'Sunshine Yellow', hex: '#F7D560' },
+            { id: 'purple', name: 'Lavender Purple', hex: '#9B7B9D' },
+            { id: 'blue', name: 'Dusty Blue', hex: '#6D8A96' },
+            { id: 'green', name: 'Sage Green', hex: '#5A716A' },
+            { id: 'cream', name: 'Ivory Cream', hex: '#F9F7F3' }
+        ];
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Show home page by default
+            showPage('home');
+            
+            // Set up login/signup form handlers
+            setupLoginModal();
+            
+            // Load order page content when it becomes active
+            document.getElementById('order-page').addEventListener('DOMNodeInserted', function() {
+                if (this.classList.contains('active')) {
+                    loadOrderStep(currentStep);
+                }
+            });
+        });
+        
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const pageElement = document.getElementById(pageId + '-page');
+            pageElement.classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Update navbar link
+            if (pageId !== 'cart') {
+                const navLink = document.querySelector(`.nav-link[onclick="showPage('${pageId}')"]`);
+                if (navLink) navLink.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Load page content if needed
+            if (pageId === 'order') loadOrderStep(currentStep);
+            if (pageId === 'gallery') loadGalleryPage();
+            if (pageId === 'cart') loadCartPage();
+        }
+        
+        // Order Step Navigation
+        function goToStep(step) {
+            currentStep = step;
+            updateOrderProgress();
+            loadOrderStep(step);
+        }
+        
+        function updateOrderProgress() {
+            // Update progress bar
+            const progress = (currentStep / 4) * 100;
+            document.getElementById('orderProgress').style.width = progress + '%';
+            
+            // Update step indicators
+            const steps = [1, 2, 3, 4];
+            steps.forEach(step => {
+                const stepElement = document.getElementById(`step${step}Indicator`);
+                if (step < currentStep) {
+                    stepElement.classList.remove('active');
+                    stepElement.classList.add('completed');
+                } else if (step === currentStep) {
+                    stepElement.classList.add('active');
+                    stepElement.classList.remove('completed');
+                } else {
+                    stepElement.classList.remove('active', 'completed');
+                }
+            });
+        }
+        
+        function loadOrderStep(step) {
+            // Hide all step contents
+            document.querySelectorAll('.order-step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show current step
+            const stepElement = document.getElementById(`step${step}`);
+            stepElement.classList.add('active');
+            
+            // Load step content
+            switch(step) {
+                case 1:
+                    loadFlowerOptions();
+                    break;
+                case 2:
+                    loadArrangementOptions();
+                    break;
+                case 3:
+                    loadPersonalizationOptions();
+                    break;
+                case 4:
+                    loadReviewStep();
+                    break;
+            }
+            
+            // Scroll to top of step
+            stepElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function loadFlowerOptions() {
+            const container = document.getElementById('flowerOptions');
+            container.innerHTML = '';
+            
+            flowerOptions.forEach(flower => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3 mb-4';
+                col.innerHTML = `
+                    <div class="card selection-card h-100 ${orderConfig.flower === flower.id ? 'selected' : ''}" onclick="selectFlower('${flower.id}')">
+                        <div class="checkmark">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <img src="${flower.image}" class="card-img-top" alt="${flower.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${flower.name}</h5>
+                            <p class="card-text text-muted">${flower.description}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="h5 mb-0 text-deep-moss">$${flower.price.toFixed(2)}</span>
+                                <span class="badge bg-rustic-cream text-dark">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+        
+        function loadArrangementOptions() {
+            const container = document.getElementById('arrangementOptions');
+            container.innerHTML = '';
+            
+            arrangementOptions.forEach(arrangement => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3 mb-4';
+                col.innerHTML = `
+                    <div class="card selection-card h-100 ${orderConfig.arrangement === arrangement.id ? 'selected' : ''}" onclick="selectArrangement('${arrangement.id}')">
+                        <div class="checkmark">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <img src="${arrangement.image}" class="card-img-top" alt="${arrangement.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${arrangement.name}</h5>
+                            <p class="card-text text-muted">${arrangement.description}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="h5 mb-0 text-deep-moss">$${arrangement.price.toFixed(2)}</span>
+                                <span class="badge bg-rustic-cream text-dark">+${arrangement.price.toFixed(0)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+        
+        function loadPersonalizationOptions() {
+            // Load color options
+            const colorContainer = document.getElementById('colorOptions');
+            colorContainer.innerHTML = '';
+            
+            colorOptions.forEach(color => {
+                const colorDiv = document.createElement('div');
+                colorDiv.className = `color-option ${orderConfig.colors.includes(color.id) ? 'selected' : ''}`;
+                colorDiv.style.backgroundColor = color.hex;
+                colorDiv.setAttribute('title', color.name);
+                colorDiv.onclick = () => toggleColor(color.id);
+                colorContainer.appendChild(colorDiv);
+            });
+            
+            // Load gift card checkbox
+            document.getElementById('includeGiftCard').checked = orderConfig.giftCard;
+            document.getElementById('personalMessage').value = orderConfig.message;
+            document.getElementById('specialRequests').value = orderConfig.specialRequests;
+            
+            // Update preview
+            updatePersonalizationPreview();
+        }
+        
+        function loadReviewStep() {
+            // Update review sections
+            const selectedFlower = flowerOptions.find(f => f.id === orderConfig.flower);
+            const selectedArrangement = arrangementOptions.find(a => a.id === orderConfig.arrangement);
+            
+            document.getElementById('reviewFlower').textContent = selectedFlower ? selectedFlower.name + ' ($' + selectedFlower.price.toFixed(2) + ')' : 'No selection';
+            document.getElementById('reviewArrangement').textContent = selectedArrangement ? selectedArrangement.name + ' ($' + selectedArrangement.price.toFixed(2) + ')' : 'No selection';
+            
+            // Update colors
+            const selectedColors = colorOptions.filter(c => orderConfig.colors.includes(c.id));
+            document.getElementById('reviewColors').textContent = selectedColors.length > 0 ? 
+                selectedColors.map(c => c.name).join(', ') : 'No colors selected';
+            
+            // Update message
+            document.getElementById('reviewMessage').textContent = orderConfig.message || 'No message added';
+            
+            // Update special requests
+            document.getElementById('reviewRequests').textContent = orderConfig.specialRequests || 'No special requests';
+            
+            // Update summary
+            updateOrderSummary();
+        }
+        
+        // Selection Functions
+        function selectFlower(flowerId) {
+            orderConfig.flower = flowerId;
+            
+            // Update UI
+            document.querySelectorAll('.selection-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.selection-card').classList.add('selected');
+            
+            showToast('Flower Selected', 'Perfect choice! You can always change this later.');
+        }
+        
+        function selectArrangement(arrangementId) {
+            orderConfig.arrangement = arrangementId;
+            
+            // Update UI
+            document.querySelectorAll('.selection-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.selection-card').classList.add('selected');
+            
+            showToast('Arrangement Selected', 'Beautiful presentation choice!');
+        }
+        
+        function toggleColor(colorId) {
+            const index = orderConfig.colors.indexOf(colorId);
+            if (index === -1) {
+                orderConfig.colors.push(colorId);
+            } else {
+                orderConfig.colors.splice(index, 1);
+            }
+            
+            // Update UI
+            const colorElement = event.target;
+            colorElement.classList.toggle('selected');
+            
+            updatePersonalizationPreview();
+        }
+        
+        function updatePersonalizationPreview() {
+            // Update flower preview
+            const selectedFlower = flowerOptions.find(f => f.id === orderConfig.flower);
+            document.getElementById('selectedFlowerPreview').textContent = selectedFlower ? selectedFlower.name : 'No flower selected yet';
+            
+            // Update arrangement preview
+            const selectedArrangement = arrangementOptions.find(a => a.id === orderConfig.arrangement);
+            document.getElementById('selectedArrangementPreview').textContent = selectedArrangement ? selectedArrangement.name : 'No arrangement selected yet';
+            
+            // Update colors preview
+            const colorsContainer = document.getElementById('selectedColorsPreview');
+            colorsContainer.innerHTML = '';
+            
+            const selectedColors = colorOptions.filter(c => orderConfig.colors.includes(c.id));
+            selectedColors.forEach(color => {
+                const colorDiv = document.createElement('div');
+                colorDiv.className = 'color-option me-2 mb-2';
+                colorDiv.style.backgroundColor = color.hex;
+                colorDiv.setAttribute('title', color.name);
+                colorsContainer.appendChild(colorDiv);
+            });
+            
+            if (selectedColors.length === 0) {
+                colorsContainer.innerHTML = '<span class="text-muted">No colors selected yet</span>';
+            }
+            
+            // Update estimated total
+            updateEstimatedTotal();
+        }
+        
+        function updateEstimatedTotal() {
+            const flower = flowerOptions.find(f => f.id === orderConfig.flower);
+            const arrangement = arrangementOptions.find(a => a.id === orderConfig.arrangement);
+            
+            let total = 0;
+            if (flower) total += flower.price;
+            if (arrangement) total += arrangement.price;
+            
+            // Add gift card if selected
+            const giftCardChecked = document.getElementById('includeGiftCard');
+            if (giftCardChecked && giftCardChecked.checked) {
+                total += 4.99;
+            }
+            
+            document.getElementById('estimatedTotal').textContent = '$' + total.toFixed(2);
+        }
+        
+        function updateOrderSummary() {
+            const flower = flowerOptions.find(f => f.id === orderConfig.flower);
+            const arrangement = arrangementOptions.find(a => a.id === orderConfig.arrangement);
+            const giftCardChecked = document.getElementById('includeGiftCard');
+            
+            let subtotal = 0;
+            
+            if (flower) {
+                document.getElementById('summaryFlowerPrice').textContent = '$' + flower.price.toFixed(2);
+                subtotal += flower.price;
+            } else {
+                document.getElementById('summaryFlowerPrice').textContent = '$0.00';
+            }
+            
+            if (arrangement) {
+                document.getElementById('summaryArrangementPrice').textContent = '$' + arrangement.price.toFixed(2);
+                subtotal += arrangement.price;
+            } else {
+                document.getElementById('summaryArrangementPrice').textContent = '$0.00';
+            }
+            
+            if (giftCardChecked && giftCardChecked.checked) {
+                document.getElementById('summaryGiftCardPrice').textContent = '$4.99';
+                subtotal += 4.99;
+            } else {
+                document.getElementById('summaryGiftCardPrice').textContent = '$0.00';
+            }
+            
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            
+            document.getElementById('summaryTax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('summaryTotal').textContent = '$' + total.toFixed(2);
+        }
+        
+        // Form Submission Functions
+        function addToCart() {
+            // Update order config with form values
+            orderConfig.giftCard = document.getElementById('includeGiftCard').checked;
+            orderConfig.message = document.getElementById('personalMessage').value;
+            orderConfig.specialRequests = document.getElementById('specialRequests').value;
+            
+            if (!orderConfig.flower || !orderConfig.arrangement) {
+                showToast('Incomplete Order', 'Please select a flower and arrangement first.');
+                return;
+            }
+            
+            if (orderConfig.colors.length === 0) {
+                showToast('Color Selection', 'Please select at least one color for your flowers.');
+                return;
+            }
+            
+            showToast('Added to Cart!', 'Your custom Forlaloo has been added to your cart.');
+            updateCartCount(1);
+            
+            // Reset order process
+            setTimeout(() => {
+                showPage('cart');
+            }, 1500);
+        }
+        
+        function addToCartAndCheckout() {
+            addToCart();
+            setTimeout(() => {
+                checkout();
+            }, 2000);
+        }
+        
+        // Login Modal Functions
+        function setupLoginModal() {
+            // Login form handler
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simple validation
+                if (!email || !password) {
+                    showToast('Error', 'Please fill in all fields');
+                    return;
+                }
+                
+                // Simulate login
+                currentUser = {
+                    email: email,
+                    name: email.split('@')[0]
+                };
+                isSubscribed = true;
+                
+                showToast('Welcome Back!', 'Successfully logged in');
+                hideLoginModal();
+                
+                // Proceed with checkout after login
+                completeCheckout();
+            });
+            
+            // Signup form handler
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const subscriptionPlan = document.querySelector('input[name="subscriptionPlan"]:checked').value;
+                const termsAgreed = document.getElementById('termsAgreement').checked;
+                
+                // Validation
+                if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                    showToast('Error', 'Please fill in all fields');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showToast('Error', 'Passwords do not match');
+                    return;
+                }
+                
+                if (!termsAgreed) {
+                    showToast('Error', 'Please agree to the terms and conditions');
+                    return;
+                }
+                
+                // Simulate signup
+                currentUser = {
+                    email: email,
+                    name: firstName + ' ' + lastName,
+                    subscriptionPlan: subscriptionPlan
+                };
+                isSubscribed = true;
+                
+                showToast('Welcome to Forlaloo!', 'Account created and subscription activated');
+                hideLoginModal();
+                
+                // Proceed with checkout after signup
+                completeCheckout();
+            });
+        }
+        
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showLoginTab(tab) {
+            // Update tabs
+            document.querySelectorAll('.modal-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show correct tab content
+            document.getElementById('loginTab').style.display = 'none';
+            document.getElementById('signupTab').style.display = 'none';
+            document.getElementById(tab + 'Tab').style.display = 'block';
+        }
+        
+        // Checkout Functions
+        function checkout() {
+            if (!currentUser || !isSubscribed) {
+                showLoginModal();
+            } else {
+                completeCheckout();
+            }
+        }
+        
+        function completeCheckout() {
+            // Simulate successful checkout
+            showToast('Order Placed!', 'Your eternal flowers are being crafted with love');
+            
+            // Clear cart
+            setTimeout(() => {
+                updateCartCount(-2); // Reset to 0 items
+                loadCartPage(); // Reload cart to show empty state
+            }, 2000);
+        }
+        
+        // Cart Functions
+        function loadCartPage() {
+            const cartItems = [
+                {
+                    id: 'item1',
+                    name: 'Eternal Rose Bouquet',
+                    image: 'https://images.unsplash.com/photo-1578948856697-db91d246b7b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    description: 'Red roses in ceramic vase • Anniversary gift',
+                    price: 114.98,
+                    quantity: 1
+                },
+                {
+                    id: 'item2',
+                    name: 'Tulip Serenity Box',
+                    image: 'https://images.unsplash.com/photo-1547517023-7ca0c162f816?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    description: 'Mixed tulips in gift box • Birthday surprise',
+                    price: 89.98,
+                    quantity: 1
+                }
+            ];
+            
+            const cartContent = document.getElementById('cart-content');
+            
+            if (cartItems.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="mb-3">Your Cart is Empty</h3>
+                        <p class="mb-4">Add some lasting beauty to your cart to brighten someone's day forever.</p>
+                        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('order')">
+                            <i class="fas fa-bouquet me-2"></i>Start Creating
+                        </a>
+                    </div>
+                `;
+            } else {
+                let itemsHTML = '';
+                let subtotal = 0;
+                
+                cartItems.forEach(item => {
+                    itemsHTML += `
+                        <div class="cart-item" id="cart-item-${item.id}">
+                            <img src="${item.image}" class="cart-item-image" alt="${item.name}">
+                            <div class="flex-grow-1">
+                                <h4>${item.name}</h4>
+                                <p class="text-muted">${item.description}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div class="quantity-selector">
+                                        <button class="quantity-btn" onclick="updateCartQuantity('${item.id}', -1)">-</button>
+                                        <input type="text" class="quantity-input" id="quantity-${item.id}" value="${item.quantity}" readonly>
+                                        <button class="quantity-btn" onclick="updateCartQuantity('${item.id}', 1)">+</button>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">$${(item.price * item.quantity).toFixed(2)}</h5>
+                                    </div>
+                                    <button class="btn btn-outline-danger" onclick="removeCartItem('${item.id}')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    subtotal += item.price * item.quantity;
+                });
+                
+                const shipping = 12.99;
+                const tax = subtotal * 0.08;
+                const total = subtotal + shipping + tax;
+                
+                cartContent.innerHTML = `
+                    <div class="row">
+                        <div class="col-lg-8">
+                            ${itemsHTML}
+                            <div class="mt-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Promo code">
+                                    <button class="btn btn-outline-primary" type="button">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="order-summary">
+                                <h4 class="mb-4">Order Summary</h4>
+                                <div class="order-summary-item">
+                                    <span>Subtotal</span>
+                                    <span>$${subtotal.toFixed(2)}</span>
+                                </div>
+                                <div class="order-summary-item">
+                                    <span>Shipping</span>
+                                    <span>$${shipping.toFixed(2)}</span>
+                                </div>
+                                <div class="order-summary-item">
+                                    <span>Tax</span>
+                                    <span>$${tax.toFixed(2)}</span>
+                                </div>
+                                <div class="order-summary-item pt-3">
+                                    <strong class="order-total">Total</strong>
+                                    <strong class="order-total">$${total.toFixed(2)}</strong>
+                                </div>
+                                <div class="d-grid gap-2 mt-4">
+                                    <a href="#" class="btn btn-primary btn-lg" onclick="showPage('order')">
+                                        <i class="fas fa-plus me-2"></i>Add More Items
+                                    </a>
+                                    <button class="btn btn-success btn-lg" onclick="checkout()">
+                                        <i class="fas fa-lock me-2"></i>Proceed to Checkout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        function updateCartQuantity(itemId, change) {
+            const input = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(input.value) + change;
+            
+            if (quantity < 1) {
+                removeCartItem(itemId);
+                return;
+            }
+            
+            if (quantity > 10) quantity = 10;
+            
+            input.value = quantity;
+            showToast('Cart Updated', 'Quantity adjusted');
+            updateCartCount(0); // Refresh count display
+        }
+        
+        function removeCartItem(itemId) {
+            const itemElement = document.getElementById(`cart-item-${itemId}`);
+            itemElement.style.opacity = '0';
+            itemElement.style.transform = 'translateX(100px)';
+            
+            setTimeout(() => {
+                // In a real app, this would update the server
+                loadCartPage();
+                updateCartCount(-1);
+            }, 300);
+        }
+        
+        function updateCartCount(change) {
+            const countElements = [
+                document.getElementById('floatingCartCount'),
+                document.getElementById('desktopCartCount'),
+                document.getElementById('mobileCartCount')
+            ];
+            
+            countElements.forEach(element => {
+                if (element) {
+                    let count = parseInt(element.textContent) + change;
+                    if (count < 0) count = 0;
+                    element.textContent = count;
+                }
+            });
+        }
+        
+        function quickOrder(orderType) {
+            showToast('Quick Order Added', 'Added to your cart');
+            updateCartCount(1);
+        }
+        
+        // Gallery Functions
+        function loadGalleryPage() {
+            const galleryItems = [
+                {
+                    category: 'wedding',
+                    image: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    title: 'Bridal Bouquet',
+                    description: 'White roses and lilies for a classic wedding'
+                },
+                {
+                    category: 'home',
+                    image: 'https://images.unsplash.com/photo-1559268950-2d7ceb2efa3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    title: 'Living Room Display',
+                    description: 'Large mixed bouquet for mantle decoration'
+                },
+                {
+                    category: 'gift',
+                    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    title: 'Anniversary Gift Box',
+                    description: 'Roses in a luxury keepsake box'
+                }
+            ];
+            
+            // Create filter buttons
+            const filters = ['All', 'Wedding', 'Home Decor', 'Gifts', 'Seasonal'];
+            const filtersContainer = document.getElementById('galleryFilters');
+            filtersContainer.innerHTML = '';
+            
+            filters.forEach(filter => {
+                const button = document.createElement('button');
+                button.className = 'badge-category me-2 mb-2';
+                button.textContent = filter;
+                button.onclick = () => filterGallery(filter.toLowerCase());
+                filtersContainer.appendChild(button);
+            });
+            
+            // Create gallery items
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = '';
+            
+            galleryItems.forEach(item => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4 gallery-item';
+                col.setAttribute('data-category', item.category);
+                col.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="gallery-caption">
+                        <h5>${item.title}</h5>
+                        <p class="mb-0">${item.description}</p>
+                    </div>
+                `;
+                galleryContainer.appendChild(col);
+            });
+        }
+        
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Update active filter
+            document.querySelectorAll('.badge-category').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Toast Notification
+        function showToast(title, message) {
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            
+            const toast = document.getElementById('toastNotification');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                hideToast();
+            }, 4000);
+        }
+        
+        function hideToast() {
+            const toast = document.getElementById('toastNotification');
+            toast.classList.remove('show');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideLoginModal();
+            }
+        });
+    </script>
+</body>
+</html>
